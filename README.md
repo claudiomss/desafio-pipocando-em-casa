@@ -37,9 +37,3 @@ Lembre-se que o desafio não é um processo de seleção, mas sim um exercício 
 4. Caso queiram criar uma nova API ou consumir outra, isto é livre!
 5. Também é livre quem quiser criar a versão escura (*dark mode*).
 6. Enviar o link da sua solução como uma *issue* deste projeto.
-
-## Avaliação 
-- Legibilidade do código (*clean code*).
-- Consistência nas nomenclaturas, sejam elas, CamelCase, Snake Case ou Kebab Case.
-- Responsividade em todas as páginas em versão desktop, celular e tablet.
-- Velocidade de Requisição.
