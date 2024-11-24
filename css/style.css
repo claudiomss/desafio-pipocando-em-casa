@@ -1,56 +1,73 @@
 /* Carousel */
 #home {
-    background-color: var(--color-accent);
+  background-color: var(--color-accent);
 }
 
 /* Avaliações */
 #avaliacoes {
-    background-color: var(--light);
+  background-color: var(--light);
 }
 
 /* Botões de Mais e Badges */
-.btn-more, 
+.btn-more,
 .badge {
-    background-color: var(--color-accent);
-    color: var(--light);
+  background-color: var(--color-accent);
+  color: var(--light);
 }
 
-.btn-more:hover{
-    background-color: var(--color-hover);
-    color: var(--light);
+.btn-more:hover {
+  background-color: var(--color-hover);
+  color: var(--light);
 }
 
-.btn-more:active{
-    background-color: var(--color-active);
-    color: var(--light);
+.btn-more:active {
+  background-color: var(--color-active);
+  color: var(--light);
 }
 
 /* Seção Novidades */
 
 .title-news a {
-    color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .title-news a:hover {
-    color: var(--color-hover);
-    text-decoration: none;
+  color: var(--color-hover);
+  text-decoration: none;
 }
 
 .title-news a:active {
-    color: var(--color-active);
+  color: var(--color-active);
 }
 
 /* Seção sobre */
 .fab {
-    color: var(--color-accent);
-    transition: all 0.4s ease-out;
+  color: var(--color-accent);
+  transition: all 0.4s ease-out;
 }
 
 .fab:hover {
-    color: var(--color-hover);
-    transform: translateY(-10px);
+  color: var(--color-hover);
+  transform: translateY(-10px);
 }
 
 .fab:active {
-    color: var(--color-active);
+  color: var(--color-active);
+}
+
+/* -------------Add-------------- */
+
+.card-text {
+  display: -webkit-box; /* Define como um contêiner flexível */
+  -webkit-line-clamp: 8; /* Limita a 3 linhas */
+  -webkit-box-orient: vertical; /* Define orientação vertical */
+  overflow: hidden; /* Oculta o texto excedente */
+}
+
+.card-text-2 {
+  font-size: 1.1rem;
+}
+
+.container-avaliacao {
+  width: 20rem;
 }
