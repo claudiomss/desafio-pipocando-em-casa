@@ -203,44 +203,28 @@ function filmesEmBreve() {
       const dataFormatada = `${dia}/${mes}/${ano}`
 
       codigo_html += `
-                
-         <div class="carousel-item">
-           
-                <div class="container ">
-               
-                  <div class="row">
-              
-                      <div class="col-8">
+      <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <h5 class="card-title text-light"><strong>${titulo}</strong></h5>
+            <p class="card-text-2 text-light">${descricao}</p>
 
-                
-                
-                    <h5 class="card-title text-light"><strong>${titulo}</strong></h5>
-                    <p class="card-text-2 text-light">
-                    ${descricao}
-                    </p>
-               
-                    <p class="card-text-2 text-light">
-                      <strong>Estreia:</strong> ${dataFormatada}
-                    </p>
-               
-                      <p class="card-text-2 mr-1 text-light">
-                        <strong>Avaliação:</strong> ${popularidade} pontos
-                      </p>
-                      
-              
-                    </div>
+            <p class="card-text-2 text-light">
+              <strong>Estreia:</strong> ${dataFormatada}
+            </p>
 
-                          <div class="col-4">
-                    <img
-                   
-                     class="img-fluid"
-                      src=${imagem}
-                    ></img>
-                     </div>
-                  </div>
-                </div>
-              </div>
-     
+            <p class="card-text-2 mr-1 text-light">
+              <strong>Avaliação:</strong> ${popularidade} pontos
+            </p>
+          </div>
+
+          <div class="col-4">
+            <img class="img-fluid" src=${imagem}></img>
+          </div>
+        </div>
+      </div>
+    </div>    
       `
     }
 
