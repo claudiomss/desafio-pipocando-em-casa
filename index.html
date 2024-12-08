@@ -35,7 +35,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
   <body>
     <header>
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand text-light" href="index.html">
+      <a class="navbar-brand text-light" href="/">
         <img src="https://raw.githubusercontent.com/MarleneMoraes/pipocando-em-casa/main/img/Logo.png"
           width="40">Pipocando em Casa
       </a>
@@ -47,24 +47,24 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mt-2 ml-auto mr-auto  mt-lg-0 ">
           <li class="nav-item">
-            <a href="index.html" class="nav-link text-light">Lançamentos</a>
+            <a href="/" class="nav-link text-light">Lançamentos</a>
           </li>
           <li class="nav-item">
-            <a href="destaque.html" class="nav-link text-light">Em Destaque</a>
+            <a href="/destaque" class="nav-link text-light">Em Destaque</a>
           </li>
           <li class="nav-item">
-            <a href="avaliacoes.html" class="nav-link text-light">Avaliações</a>
+            <a href="/avaliacoes" class="nav-link text-light">Avaliações</a>
           </li>
           <li class="nav-item">
-            <a href="making of.html" class="nav-link text-light">Entrevistas & Making Of</a>
+            <a href="/making_of" class="nav-link text-light">Entrevistas & Making Of</a>
           </li>
           <li class="nav-item">
-            <a href="novidades.html" class="nav-link text-light">Novidades</a>
+            <a href="/novidades" class="nav-link text-light">Novidades</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-search my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+          <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button id="buscar-palavra"  class="btn btn-search my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
       </div>
     </nav>
@@ -74,7 +74,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
 
   <section id="home">
       <div class="container">
-        <h1 class="display-8 mb-3 text-center text-light">Lançamentos</h1>
+        <h2 class="display-8 mb-3 text-center text-light">Lançamentos</h2>
         <div class="carousel d-flex justify-content-center">
           <div
             id="carouselExampleIndicators"
@@ -101,7 +101,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
               ></li>
             </ol>
             <div class="carousel-inner">
-              <div id="carousel-add">
+              <div style="padding-bottom: 2rem;" id="carousel-add">
                 <!-------------------  Lançamentos ----------------------->
               </div>
             </div>
@@ -113,26 +113,26 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
    
   <section id="destaque">
     <div class="container">
-      <div class="mb-3 d-flex justify-content-between">
-        <h2 class="display-8">Em Destaque</h2>
-        <select id="theme" class="custom-select col-md-2">
+      <div class="mb-3 d-flex justify-content-between display-block">
+        <h3 class="display-8">Em Destaque</h3>
+        <select style="width: 90%;" id="theme" class="custom-select col-md-2">
           <!-------------------  Opções ----------------------->
         </select>
       </div>
-        <div id="film" class="row">  
+        <div  id="film" class="row">  
         <!-------------------  Destaques ----------------------->
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
-        <a class="btn btn-sm me-md-2 btn-more" href="destaque.html">+ Destaques</a>
+        <a class="btn btn-sm me-md-2 btn-more" href="/destaque">+ Destaques</a>
       </div>
     </div>
   </section>
 
   <section id="avaliacoes">
     <div class="container mb-4">
-      <h2 class="display-8 mb-3">Últimas Avaliações</h2>
+      <h3 class="display-8 mb-3">Últimas Avaliações</h3>
       <div class="row">
-        <div id="avaliacao" class="col-md-12 d-flex justify-content-between">
+        <div style="padding: 0;" id="avaliacao" class="col-md-12 d-flex justify-content-between display-block2">
           <!-------------------  Avaliações ----------------------->
         </div>
       </div>
@@ -148,28 +148,28 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
       <h2 class="display-8 mb-3">Entrevistas & Making Of</h2>
       <div class="row">
         <div class="col-md-4">
-          <!-- <iframe width="100%" height="60%" src="https://www.youtube.com/embed/6PjYlCyxxHI" frameborder="0"
+          <iframe width="100%" height="60%" src="https://www.youtube.com/embed/6PjYlCyxxHI" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
-          </iframe> -->
+          </iframe>
           <h3 class="card-title">Enola Holmes</h4>
             <p class="card-subtitle mb-2">Direção: Harry Bradbeer</p>
             <p class="card-subtitle mb-2">Roteiro: Jack Thorne</p>
             <p class="card-subtitle mb-2">Estreia: 23/09/2020</p>
         </div>
-        <div class="col-md-4">
-          <!-- <iframe width="100%" height="60%" src="https://www.youtube.com/embed/GzF51d_N-uM" frameborder="0"
+        <div   class="col-md-4 card-mk">
+          <iframe width="100%" height="60%" src="https://www.youtube.com/embed/GzF51d_N-uM" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe> -->
+            allowfullscreen></iframe>
           <h4 class="card-title">Power</h4>
             <p class="card-subtitle mb-2">Direção: Henry Joost e Ariel Schulman</p>
             <p class="card-subtitle mb-2">Roteiro: Mattson Tomlin</p>
             <p class="card-subtitle mb-2">Estreia: 14/08/2020</p>
         </div>
         <div class="col-md-4">
-          <!-- <iframe width="100%" height="60%" src="https://www.youtube.com/embed/XbPVAiX3Igg" frameborder="0"
+          <iframe width="100%" height="60%" src="https://www.youtube.com/embed/XbPVAiX3Igg" frameborder="0"
             allowfullscreen>
-          </iframe> -->
+          </iframe>
           <h3 class="card-title">Mulan</h4>
             <p class="card-subtitle mb-2">Direção: Niki Caro e Ariel Schulman</p>
             <p class="card-subtitle mb-2">Roteiro: Rick Jaffa, Amanda Silver, Lauren Hynek e Elizabeth Martin</p>
@@ -177,7 +177,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
         </div>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
-        <a class="btn btn-sm me-md-2 btn-more" href="making of.html">+ Making Of</a>
+        <a class="btn btn-sm me-md-2 btn-more" href="/making_of">+ Making Of</a>
       </div>
     </div>
   </section>

@@ -3,6 +3,7 @@ const API_KEY = "0d5bdd0c7a8fbfbbadb64504fe438e98"
 
 function MostraFilmesEmCartaz() {
   $.ajax({
+    // url: TMDB_ENDPOINT_BASE + "/movie/now_playing?language=pt",
     url: TMDB_ENDPOINT_BASE + "/movie/now_playing",
     data: {
       api_key: API_KEY,
@@ -15,15 +16,15 @@ function MostraFilmesEmCartaz() {
       imagem = "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path
       descricao = data.results[i].overview
       codigo_html += `     
-        <div class="col-md-3 p-3">
-          <img src=${imagem} class="img-fluid">
-          <div class="card-body mt-1 p-2">
-            <h4 class="card-title">${titulo}</h4>
-            <p class="card-text text-justify">
-            ${descricao}
-            </p>
-          </div>
-        </div>   `
+            <div class="col-md-3 p-3 d-flex flex-column align-items-center">
+  <img id="img-destaque" src="${imagem}" class="img-fluid">
+  <div class="card-body mt-1 p-2 ">
+    <h4 class="card-title">${titulo}</h4>
+    <p class="card-text text-justify">
+      ${descricao}
+    </p>
+  </div>
+</div> `
     }
     $("#film").html(codigo_html)
   })
@@ -31,7 +32,7 @@ function MostraFilmesEmCartaz() {
 
 function buscarTodosGeneros() {
   return $.ajax({
-    url: TMDB_ENDPOINT_BASE + "/genre/movie/list",
+    url: TMDB_ENDPOINT_BASE + "/genre/movie/list?language=pt",
     data: {
       api_key: API_KEY,
     },
@@ -51,7 +52,7 @@ function buscarTodosGeneros() {
 function carregarTodosGeneros() {
   let codigo_html = ""
   buscarTodosGeneros().then(({ genres }) => {
-    console.log(genres)
+    // console.log(genres)
 
     for (i = 0; i < genres.length; i++) {
       id = genres[i].id
@@ -68,7 +69,7 @@ function carregarTodosGeneros() {
 function buscarGeneroFilme() {
   let codigo_html = ""
   buscarTodosGeneros().then(({ genres }) => {
-    console.log(genres)
+    // console.log(genres)
 
     for (i = 0; i < genres.length; i++) {
       id = genres[i].id
@@ -77,14 +78,14 @@ function buscarGeneroFilme() {
     }
 
     full_code_html =
-      '<option value="" selected>Categoria: TODOS</option>' + codigo_html
+      '<option  value="101010" selected>Categoria: TODOS</option>' + codigo_html
     $("#theme").html(full_code_html)
   })
 }
 
 function mostraFilmesPorFiltro(id) {
   $.ajax({
-    url: TMDB_ENDPOINT_BASE + `/discover/movie?with_genres=${id}`,
+    url: TMDB_ENDPOINT_BASE + `/discover/movie?with_genres=${id}&language=pt`,
     data: {
       api_key: API_KEY,
     },
@@ -107,6 +108,78 @@ function mostraFilmesPorFiltro(id) {
         </div>   `
     }
     $("#film").html(codigo_html)
+  })
+}
+
+function mostraFilmesPorPalavra(palavra) {
+  $.ajax({
+    url: TMDB_ENDPOINT_BASE + `/search/movie?query=${palavra}&language=pt-br`,
+    data: {
+      api_key: API_KEY,
+    },
+  }).done(function (data) {
+    let codigo_html = ""
+
+    for (i = 0; i < data.results.length; i++) {
+      titulo = data.results[i].title
+      imagem = "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path
+      descricao = data.results[i].overview
+      codigo_html += `     
+        <div class="col-md-3 p-3">
+          <img src=${imagem} class="img-fluid">
+          <div class="card-body mt-1 p-2">
+            <h4 class="card-title">${titulo}</h4>
+            <p class="card-text text-justify">
+            ${descricao}
+            </p>
+          </div>
+        </div>   `
+    }
+    $("#film").html(codigo_html)
+  })
+}
+
+const buscarGeneroPeloID = (array, valor) => array.includes(valor)
+
+function mostraFilmesPorFiltroEPalavra(id, palavra) {
+  $.ajax({
+    url: TMDB_ENDPOINT_BASE + `/discover/movie?with_genres=${id}&language=pt`,
+    data: {
+      api_key: API_KEY,
+    },
+  }).done(function (data_id) {
+    $.ajax({
+      url: TMDB_ENDPOINT_BASE + `/search/movie?query=${palavra}&language=pt-br`,
+      data: {
+        api_key: API_KEY,
+      },
+    }).done(function (data) {
+      let codigo_html = ""
+      let resultado = ""
+
+      for (i = 0; i < data.results.length; i++) {
+        titulo = data.results[i].title
+        imagem = "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path
+        descricao = data.results[i].overview
+        genero = data.results[i].genre_ids
+
+        resultado = buscarGeneroPeloID(genero, Number(id))
+
+        if (resultado || id == "") {
+          codigo_html += `     
+          <div class="col-md-3 p-3">
+            <img src=${imagem} class="img-fluid">
+            <div class="card-body mt-1 p-2">
+              <h4 class="card-title">${titulo}</h4>
+              <p class="card-text text-justify">
+              ${descricao}
+              </p>
+            </div>
+          </div>   `
+        }
+      }
+      $("#film").html(codigo_html)
+    })
   })
 }
 
@@ -141,7 +214,7 @@ function filmesEmBreve() {
 
                 
                 
-                    <h3 class="card-title text-light"><strong>${titulo}</strong></h3>
+                    <h5 class="card-title text-light"><strong>${titulo}</strong></h5>
                     <p class="card-text-2 text-light">
                     ${descricao}
                     </p>
@@ -160,7 +233,7 @@ function filmesEmBreve() {
                           <div class="col-4">
                     <img
                    
-                      height="400"
+                     class="img-fluid"
                       src=${imagem}
                     ></img>
                      </div>
@@ -203,12 +276,12 @@ function avaliacao() {
       const dataFormatada = `${dia}/${mes}/${ano}`
 
       codigo_html += `
-        <div class="container-avaliacao">   
+        <div style="padding-top: 3rem" class="container-avaliacao">   
         <div class="container">
         <div class="row">
          <div class="col-4">
-          <div class="">
-            <img width="70px" src=${imagem}class="img-fluid">
+          <div  class="">
+            <img  width="70px" src=${imagem}class="img-fluid">
           </div>
             </div>
              <div class="col">
@@ -241,48 +314,41 @@ function avaliacao() {
   })
 }
 
-// function PesquisaFilmes() {
-//   $.ajax({
-//     url: TMDB_ENDPOINT_BASE + "/search/movie",
-//     data: {
-//       api_key: API_KEY,
-//       query: "star wars",
-//     },
-//   }).done(function (data) {
-//     let codigo_html = ""
-
-//     for (i = 0; i < data.results.length; i++) {
-//       titulo = data.results[i].title
-//       imagem = "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path
-//       descricao = data.results[i].overview
-
-//       codigo_html += `<div class="col-2"><div class="card" style="width: 18rem;">
-//                     <img src="${imagem}" class="card-img-top"
-//                         alt="${titulo}">
-//                     <div class="card-body">
-//                         <h5 class="card-title">${titulo}</h5>
-//                         <p class="card-text">${descricao}</p>
-//                         <a href="#" class="btn btn-primary">Abrir filme</a>
-//                     </div>
-//                 </div></div>`
-//     }
-
-//     $("#lista_filmes").html(codigo_html)
-//   })
-// }
-
 $(document).ready(function () {
   MostraFilmesEmCartaz()
   carregarTodosGeneros()
-  // mostraFilmesPorFiltro()
   filmesEmBreve()
   avaliacao()
 
-  // $("#btn_Pesquisar").click(PesquisaFilmes)
-
   $("#theme").change(function () {
-    // Pega o valor da opção selecionada
     const id = $(this).val()
-    mostraFilmesPorFiltro(id)
+    const palavra = $("#search-input").val()
+
+    if (palavra == "" || (palavra.length > 0) & (palavra.length < 4)) {
+      mostraFilmesPorFiltro(id)
+    } else {
+      mostraFilmesPorFiltroEPalavra(id, palavra)
+    }
+  })
+
+  $("#buscar-palavra").click(function (event) {
+    event.preventDefault()
+    $("#theme").val("")
+
+    const palavra = $("#search-input").val()
+
+    if (palavra == "") {
+      alert("Por favor, insira uma palavra.")
+      return
+    } else if ((palavra.length > 0) & (palavra.length < 4)) {
+      alert("Por favor, digite pelo menos 4 caracteres")
+      return
+    }
+
+    const path = window.location.pathname
+
+    if (path != "/destaques") {
+      window.location.href = `/destaque/?query=${encodeURIComponent(palavra)}`
+    } else mostraFilmesPorPalavra(palavra)
   })
 })

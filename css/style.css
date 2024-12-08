@@ -71,3 +71,35 @@
 .container-avaliacao {
   width: 20rem;
 }
+
+@media screen and (max-width: 768px) {
+  .card-text-2 {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  .display-block {
+    display: block !important;
+  }
+
+  #img-destaque {
+    width: 70%;
+  }
+
+  .card-mk {
+    padding: 2rem 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .display-block2 {
+    display: block !important;
+  }
+}
